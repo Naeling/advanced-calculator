@@ -13,21 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Fichiers sources\calculator">
+    <Filter Include="Fichiers sources\calculator_engine">
       <UniqueIdentifier>{eb3d19f4-fa2a-4361-b31e-775cac5468d8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\calculator\litteral">
+    <Filter Include="Fichiers sources\calculator_engine\litteral">
       <UniqueIdentifier>{ee556d9b-8eba-4481-ae92-a6c4c71862d2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="base_litteral.cpp">
-      <Filter>Fichiers sources\calculator\litteral</Filter>
+      <Filter>Fichiers sources\calculator_engine\litteral</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base_litteral.hpp">
-      <Filter>Fichiers sources\calculator\litteral</Filter>
+      <Filter>Fichiers sources\calculator_engine\litteral</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
