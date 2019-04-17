@@ -18,6 +18,12 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="calculator_engine\litteral\base_litteral.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="calculator_engine\litteral\base_litteral.hpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{0CB83A6B-EA4A-462A-A4F2-F4281009F5FC}</ProjectGuid>
@@ -122,12 +128,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="base_litteral.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="base_litteral.hpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

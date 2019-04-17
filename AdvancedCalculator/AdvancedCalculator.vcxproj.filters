@@ -21,12 +21,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="base_litteral.cpp">
+    <ClCompile Include="calculator_engine\litteral\base_litteral.cpp">
       <Filter>Fichiers sources\calculator_engine\litteral</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="base_litteral.hpp">
+    <ClInclude Include="calculator_engine\litteral\base_litteral.hpp">
       <Filter>Fichiers sources\calculator_engine\litteral</Filter>
     </ClInclude>
   </ItemGroup>
