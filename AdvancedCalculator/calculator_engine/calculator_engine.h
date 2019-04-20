@@ -7,14 +7,22 @@ public:
 		friend CalculatorEngine;
 
 	public:
-		explicit ComputableLitteral(const double value): value(value) {}
-		ComputableLitteral() {};
+		explicit ComputableLitteral() {};
+		explicit ComputableLitteral(const double numerator) : numerator(numerator) {}
+		explicit ComputableLitteral(const double numerator, const int denominator): numerator(numerator), denominator(denominator) {}
+
+		const double getNumerator() { return numerator; }
+		const double getDenominator() { return denominator; }
 
 	private:
-		const double value{0};
+		const double numerator{0};
+		const int denominator{1};
 	};
 
-	static double makeAddition(const ComputableLitteral& rLitteral, const ComputableLitteral& lLitteral) { 
-		return rLitteral.value + lLitteral.value;
+	static ComputableLitteral makeAddition(const ComputableLitteral& rLitteral, const ComputableLitteral& lLitteral) {
+		const int resultDenominator{rLitteral.denominator * lLitteral.denominator};
+		const double resultNumerator{rLitteral.numerator * lLitteral.denominator + lLitteral.numerator * rLitteral.denominator};
+		ComputableLitteral result{resultNumerator, resultDenominator};		
+		return result;
 	}
 };
