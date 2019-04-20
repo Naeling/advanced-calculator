@@ -16,18 +16,24 @@
     <Filter Include="Fichiers sources\calculator_engine">
       <UniqueIdentifier>{eb3d19f4-fa2a-4361-b31e-775cac5468d8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\calculator_engine\litteral">
-      <UniqueIdentifier>{ee556d9b-8eba-4481-ae92-a6c4c71862d2}</UniqueIdentifier>
+    <Filter Include="Fichiers sources\model">
+      <UniqueIdentifier>{3b961073-7092-41ae-b843-d419c0b88b57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\model\litteral">
+      <UniqueIdentifier>{1c7614e8-a8d7-4ed1-8783-b61a97cc6ebc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="calculator_engine\litteral\base_litteral.cpp">
-      <Filter>Fichiers sources\calculator_engine\litteral</Filter>
+    <ClCompile Include="main.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="model\litteral\base_litteral.cpp">
+      <Filter>Fichiers sources\model\litteral</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="calculator_engine\litteral\base_litteral.hpp">
-      <Filter>Fichiers sources\calculator_engine\litteral</Filter>
+    <ClInclude Include="model\litteral\base_litteral.hpp">
+      <Filter>Fichiers sources\model\litteral</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
