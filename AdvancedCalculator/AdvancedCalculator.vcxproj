@@ -23,6 +23,7 @@
     <ClCompile Include="model\litteral\base_litteral.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="calculator_engine\calculator_engine.h" />
     <ClInclude Include="model\litteral\base_litteral.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
