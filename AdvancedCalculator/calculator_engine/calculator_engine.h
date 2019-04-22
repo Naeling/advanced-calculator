@@ -11,12 +11,29 @@ public:
 		explicit ComputableLitteral(const long double numerator) : numerator_(numerator) {}
 		explicit ComputableLitteral(const long double numerator, const long long denominator): numerator_(numerator), denominator_(denominator) {}
 
+		const bool operator==(ComputableLitteral rLitteral) const;
+
 		const long double getNumerator() const { return numerator_; }
 		const long long getDenominator() const { return denominator_; }
 
 		bool simplify();
-
+		
 	private:
+		void simplifyMinusSign() {
+			if (numerator_ < 0 && denominator_ < 0)
+				makePositive();
+			else if (denominator_ < 0)
+				moveMinusSignToNumerator();
+		}
+		void makePositive() {
+			numerator_ = abs(numerator_);
+			denominator_ = abs(denominator_);
+		}
+		void moveMinusSignToNumerator() {
+			denominator_ = -denominator_;
+			numerator_ = -numerator_;
+		}
+
 		long double numerator_{0};
 		long long denominator_{1};
 	};
@@ -26,6 +43,15 @@ public:
 	static bool isInteger(const long double value) { return floor(value) == ceil(value); }
 	static long long computeGreatestCommonDivisor(const long long value1, const long long value2);
 };
+
+const bool CalculatorEngine::ComputableLitteral::operator==(ComputableLitteral rLitteral) const {
+	ComputableLitteral lLitteral = *this;
+
+	lLitteral.simplify();
+	rLitteral.simplify();
+
+	return (fabs(lLitteral.numerator_ - rLitteral.numerator_) < DBL_EPSILON) && (lLitteral.denominator_ == rLitteral.denominator_);
+}
 
 CalculatorEngine::ComputableLitteral CalculatorEngine::makeAddition(const ComputableLitteral& rLitteral, const ComputableLitteral& lLitteral) {
 	const long long resultDenominator{ rLitteral.denominator_ * lLitteral.denominator_ };
@@ -69,9 +95,10 @@ bool CalculatorEngine::ComputableLitteral::simplify() {
 		return true;
 	}
 
+	simplifyMinusSign();
+	
 	//At this point, numerator_ is known to be an Integer
-	const long long numerator = abs(static_cast<long long>(numerator_));
-	const long long greatestCommonDivisor{ computeGreatestCommonDivisor(numerator, abs(denominator_)) };
+	const long long greatestCommonDivisor{ computeGreatestCommonDivisor(abs(static_cast<long long>(numerator_)), abs(denominator_)) };
 	numerator_ /= greatestCommonDivisor;
 	denominator_ /= greatestCommonDivisor;
 
