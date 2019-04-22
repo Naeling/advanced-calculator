@@ -8,28 +8,28 @@ public:
 
 	public:
 		explicit ComputableLitteral() {};
-		explicit ComputableLitteral(const double numerator) : numerator_(numerator) {}
-		explicit ComputableLitteral(const double numerator, const int denominator): numerator_(numerator), denominator_(denominator) {}
+		explicit ComputableLitteral(const long double numerator) : numerator_(numerator) {}
+		explicit ComputableLitteral(const long double numerator, const long long denominator): numerator_(numerator), denominator_(denominator) {}
 
-		const double getNumerator() const { return numerator_; }
-		const double getDenominator() const { return denominator_; }
+		const long double getNumerator() const { return numerator_; }
+		const long long getDenominator() const { return denominator_; }
 
 		bool simplify();
 
 	private:
-		double numerator_{0};
-		int denominator_{1};
+		long double numerator_{0};
+		long long denominator_{1};
 	};
 
 	static ComputableLitteral makeAddition(const ComputableLitteral& rLitteral, const ComputableLitteral& lLitteral);
 
-	static bool isInteger(const double value) { return floor(value) == ceil(value); }
-	static int computeGreatestCommonDivisor(const int value1, const int value2);
+	static bool isInteger(const long double value) { return floor(value) == ceil(value); }
+	static long long computeGreatestCommonDivisor(const long long value1, const long long value2);
 };
 
 CalculatorEngine::ComputableLitteral CalculatorEngine::makeAddition(const ComputableLitteral& rLitteral, const ComputableLitteral& lLitteral) {
-	const int resultDenominator{ rLitteral.denominator_ * lLitteral.denominator_ };
-	const double resultNumerator{ rLitteral.numerator_ * lLitteral.denominator_ + lLitteral.numerator_ * rLitteral.denominator_ };
+	const long long resultDenominator{ rLitteral.denominator_ * lLitteral.denominator_ };
+	const long double resultNumerator{ rLitteral.numerator_ * lLitteral.denominator_ + lLitteral.numerator_ * rLitteral.denominator_ };
 
 	ComputableLitteral result{ resultNumerator, resultDenominator };
 
@@ -37,7 +37,7 @@ CalculatorEngine::ComputableLitteral CalculatorEngine::makeAddition(const Comput
 	return result;
 }
 
-int CalculatorEngine::computeGreatestCommonDivisor(const int value1, const int value2) {	
+long long CalculatorEngine::computeGreatestCommonDivisor(const long long value1, const long long value2) {	
 	if (value1 == value2) {
 		return value1;
 	}
@@ -51,7 +51,7 @@ int CalculatorEngine::computeGreatestCommonDivisor(const int value1, const int v
 	}
 	else {
 		const bool value1IsGreaterThanValue2{ value1 > value2 };
-		const int left{ value1IsGreaterThanValue2 ? (value1 % value2) : (value2 % value1) };
+		const long long left{ value1IsGreaterThanValue2 ? (value1 % value2) : (value2 % value1) };
 		
 		if(value1IsGreaterThanValue2)
 			return computeGreatestCommonDivisor(left, value2);
@@ -70,7 +70,8 @@ bool CalculatorEngine::ComputableLitteral::simplify() {
 	}
 
 	//At this point, numerator_ is known to be an Integer
-	const int greatestCommonDivisor{ computeGreatestCommonDivisor(static_cast<int>(numerator_), denominator_) };
+	const long long numerator = abs(static_cast<long long>(numerator_));
+	const long long greatestCommonDivisor{ computeGreatestCommonDivisor(numerator, abs(denominator_)) };
 	numerator_ /= greatestCommonDivisor;
 	denominator_ /= greatestCommonDivisor;
 

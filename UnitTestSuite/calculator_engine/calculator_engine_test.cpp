@@ -3,20 +3,24 @@
 
 using ComputableLitteral = CalculatorEngine::ComputableLitteral;
 
-ComputableLitteral makeIntegerLitteral(const int value) {
+ComputableLitteral makeIntegerLitteral(const long long value) {
 	return ComputableLitteral(value);
 }
 
-ComputableLitteral makeDecimalLitteral(const double value) {
+ComputableLitteral makeDecimalLitteral(const long double value) {
 	return ComputableLitteral(value);
 }
 
-ComputableLitteral makeRationalLitteral(const int numerator, const int denominator) {
+ComputableLitteral makeRationalLitteral(const long long numerator, const long long denominator) {
 	return ComputableLitteral(numerator, denominator);
 }
 
-bool areEqual(double lValue, double rValue) {
-	return fabs(lValue - rValue) < DBL_EPSILON;
+bool areEqual(const long double value1, const long double value2) {
+	return fabs(value1 - value2) < DBL_EPSILON;
+}
+
+bool areEqual(const long long value1, const long long value2) {
+	return value1 == value2;
 }
 
 bool areEqual(const ComputableLitteral& lLitteral, const ComputableLitteral& rLitteral)
@@ -28,6 +32,7 @@ bool areEqual(const ComputableLitteral& lLitteral, const ComputableLitteral& rLi
 void assertAdditionResult(const double rvalue, const double lvalue, const double result) {
 	ComputableLitteral rightLitteral(rvalue);
 	ComputableLitteral leftLitteral(lvalue);
+
 	EXPECT_TRUE(areEqual(CalculatorEngine::makeAddition(rightLitteral, leftLitteral), ComputableLitteral(result)));
 }
 
@@ -59,6 +64,7 @@ TEST(TestCalculatorEngine, TestAdditionsOfRationnalValues) {
 	assertAdditionResult(makeRationalLitteral(1, 2), makeIntegerLitteral(0), makeRationalLitteral(1, 2));
 	assertAdditionResult(makeRationalLitteral(1, 2), makeRationalLitteral(1, 2), makeIntegerLitteral(1));
 	assertAdditionResult(makeRationalLitteral(5, 4), makeRationalLitteral(27, 8), makeRationalLitteral(37, 8));
+	assertAdditionResult(makeRationalLitteral(1524897, 13245), makeRationalLitteral(465786, 12346579), makeRationalLitteral(6277810204311, 54510146285));
 }
 
 TEST(TestCalculatorEngine, TestSimplificationResult) {
