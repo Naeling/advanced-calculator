@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "AdvancedCalculator/calculator_engine/calculator_engine.h"
+#include "AdvancedCalculator/calculator_engine/calculator_engine.cpp"
 
 using ComputableLitteral = CalculatorEngine::ComputableLitteral;
 

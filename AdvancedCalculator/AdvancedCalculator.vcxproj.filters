@@ -30,6 +30,9 @@
     <ClCompile Include="model\litteral\base_litteral.cpp">
       <Filter>Fichiers sources\model\litteral</Filter>
     </ClCompile>
+    <ClCompile Include="calculator_engine\calculator_engine.cpp">
+      <Filter>Fichiers sources\calculator_engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="model\litteral\base_litteral.hpp">

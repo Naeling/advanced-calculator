@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="calculator_engine\calculator_engine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="model\litteral\base_litteral.cpp" />
   </ItemGroup>
@@ -95,7 +96,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Naeling\dev_lib\googletest\googletest\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%HOMEPATH%\source\repos\AdvancedCalculator</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
