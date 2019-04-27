@@ -15,17 +15,17 @@ void assertAdditionResult(const long double lValue, const long double rValue, co
 	ComputableLitteral lLitteral(lValue);
 	ComputableLitteral rLitteral(rValue);
 
-	EXPECT_TRUE(CalculatorEngine::makeAddition(lLitteral, rLitteral) == ComputableLitteral(result));
+	EXPECT_EQ(CalculatorEngine::makeAddition(lLitteral, rLitteral), ComputableLitteral(result));
 }
 
 void assertAdditionResult(const ComputableLitteral& lLitteral, const ComputableLitteral& rLitteral, const ComputableLitteral& result) {
-	EXPECT_TRUE(CalculatorEngine::makeAddition(lLitteral, rLitteral) == result);
+	EXPECT_EQ(CalculatorEngine::makeAddition(lLitteral, rLitteral), result);
 }
 
 void assertSimplificationResult(ComputableLitteral& litteralToSimplify, const ComputableLitteral& expectedSimplificationResult, const bool shouldBeSimplified) {
 	const bool simplificationWasDone{ litteralToSimplify.simplify() };
 
-	EXPECT_TRUE(litteralToSimplify == expectedSimplificationResult);
+	EXPECT_EQ(litteralToSimplify, expectedSimplificationResult);
 	EXPECT_EQ(simplificationWasDone, shouldBeSimplified);
 }
 
